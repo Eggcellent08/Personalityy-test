@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Bird Are You?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        .question {
+            margin: 20px 0;
+        }
+        .results {
+            display: none;
+            margin-top: 20px;
+        }
+        .result-item {
+            display: none;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Which Bird Are You?</h1>
+        <p>Welcome to the personality test! Answer the questions to find out which bird matches your personality.</p>
+
+        <div class="question">
+            <h2>1. What's your favorite time of the day?</h2>
+            <input type="radio" name="q1" value="morning"> Morning<br>
+            <input type="radio" name="q1" value="afternoon"> Afternoon<br>
+            <input type="radio" name="q1" value="evening"> Evening<br>
+            <input type="radio" name="q1" value="night"> Night<br>
+        </div>
+
+        <div class="question">
+            <h2>2. How would your friends describe you?</h2>
+            <input type="radio" name="q2" value="cheerful"> Cheerful<br>
+            <input type="radio" name="q2" value="adventurous"> Adventurous<br>
+            <input type="radio" name="q2" value="calm"> Calm<br>
+            <input type="radio" name="q2" value="wise"> Wise<br>
+        </div>
+
+        <div class="question">
+            <h2>3. What's your favorite activity?</h2>
+            <input type="radio" name="q3" value="singing"> Singing<br>
+            <input type="radio" name="q3" value="traveling"> Traveling<br>
+            <input type="radio" name="q3" value="reading"> Reading<br>
+            <input type="radio" name="q3" value="sleeping"> Sleeping<br>
+        </div>
+
+        <button onclick="showResults()">See Your Bird Personality!</button>
+
+        <div class="results">
+            <h2>Your Bird Personality:</h2>
+            <div class="result-item" id="sparrow">
+                <h3>Sparrow</h3>
+                <p>You are cheerful and love to sing. You find joy in the little things in life.</p>
+            </div>
+            <div class="result-item" id="eagle">
+                <h3>Eagle</h3>
+                <p>You are adventurous and love exploring new places. You have a strong and bold personality.</p>
+            </div>
+            <div class="result-item" id="owl">
+                <h3>Owl</h3>
+                <p>You are calm and wise. You enjoy quiet moments and deep thoughts.</p>
+            </div>
+            <div class="result-item" id="penguin">
+                <h3>Penguin</h3>
+                <p>You are a night owl and enjoy relaxing. You value comfort and close relationships.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showResults() {
+            let q1 = document.querySelector('input[name="q1"]:checked').value;
+            let q2 = document.querySelector('input[name="q2"]:checked').value;
+            let q3 = document.querySelector('input[name="q3"]:checked').value;
+
+            let result;
+            if (q1 === 'morning' && q2 === 'cheerful' && q3 === 'singing') {
+                result = 'sparrow';
+            } else if (q1 === 'afternoon' && q2 === 'adventurous' && q3 === 'traveling') {
+                result = 'eagle';
+            } else if (q1 === 'evening' && q2 === 'wise' && q3 === 'reading') {
+                result = 'owl';
+            } else {
+                result = 'penguin';
+            }
+
+            document.querySelector('.results').style.display = 'block';
+            document.querySelectorAll('.result-item').forEach(item => item.style.display = 'none');
+            document.getElementById(result).style.display = 'block';
+        }
+    </script>
+</body>
+</html>
